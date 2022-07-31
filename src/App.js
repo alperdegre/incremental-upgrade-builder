@@ -34,6 +34,13 @@ function App() {
     setModalIsShown(true);
   };
 
+  const editUpgradeHandler = (id) => {
+    setModalIsShown(true);
+  };
+  const deleteUpgradeHandler = (id) => {
+    setModalIsShown(true);
+  };
+
   return (
     <>
       {modalIsShown && <Modal onClose={hideModal}>Test</Modal>}
@@ -41,7 +48,7 @@ function App() {
         <h1>UPGRADE BUILDER</h1>
 
         <div>
-          <button type="button" onClick={newUpgradeHandler}>
+          <button type="button" onClick={newUpgradeHandler} className="upgrade__button">
             Add New Upgrade
           </button>
           <span> Show: </span>
@@ -72,6 +79,8 @@ function App() {
                 description={upgrade.description}
                 type={upgrade.type}
                 coefficient={upgrade.coefficient}
+                onEditUprade={editUpgradeHandler}
+                onDeleteUpgrade={deleteUpgradeHandler}
               />
             );
           })}
