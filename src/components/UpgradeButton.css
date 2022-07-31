@@ -1,0 +1,51 @@
+.upgrade__div {
+  display: flex;
+  background-color: transparent;
+  justify-content:start;
+  align-items: center;
+  border: 1px solid var(--black);
+  width: 90%;
+  margin: 1rem auto;
+  text-align: start;
+  padding: 0.1rem 1rem;
+  border-radius: 0.4rem;
+  font-size: 14px;
+  letter-spacing: 0.1rem;
+  color: var(--black);
+}
+
+.upgrade__cost {
+  width: 200px;
+}
+
+.upgrade__name {
+  width: 250px;
+  margin-right: 1rem;
+}
+
+.upgrade__description {
+  width: 500px;
+}
+
+.upgrade__type {
+  width: 200px;
+}
+
+.upgrade__coefficient {
+  width: 200px;
+}
+
+.upgrade__button {
+  border: 1px solid var(--black);
+  background-color: transparent;
+  color: var(--black);
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  margin: 0 2rem;
+}
+
+.upgrade__button:hover {
+  background-color: var(--button-hover);
+  transition: background-color 0.4s;
+}
