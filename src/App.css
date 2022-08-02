@@ -10,3 +10,36 @@
 .App {
   text-align: center;
 }
+
+.upgrade__buttonGroup {
+  margin: 1rem;
+}
+
+.modal__contents {
+text-align: center;
+}
+
+.upgrade__inputGroup {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.modal__formContents {
+margin: 0 15rem;
+}
+
+.modal__title {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.modal__input {
+  border: 1px solid var(--black);
+  background-color: transparent;
+  color: var(--black);
+  border-radius: 0.4rem;
+}

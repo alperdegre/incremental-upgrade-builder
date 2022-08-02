@@ -19,7 +19,7 @@
 }
 
 .upgrade__name {
-  width: 250px;
+  width: 200px;
   margin-right: 1rem;
 }
 
@@ -28,7 +28,11 @@
 }
 
 .upgrade__type {
-  width: 200px;
+  width: 240px;
+}
+
+.upgrade__amount {
+  width: 300px;
 }
 
 .upgrade__coefficient {

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./UpgradeButton.css";
 import { formatNumber } from "../utils/utils";
 
-const UpgradeButton = ({ id, name, cost, description, type, coefficient, onEditUprade, onDeleteUpgrade }) => {
+const UpgradeButton = ({ id, name, cost, description, type, amountRequired, coefficient, onEditUprade, onDeleteUpgrade }) => {
 
   const editUpgradeHandler = (event) => {
     event.preventDefault();
@@ -22,6 +22,7 @@ const UpgradeButton = ({ id, name, cost, description, type, coefficient, onEditU
     >
       <h3 className="upgrade__name">{name}</h3>
       <p className="upgrade__description">{description}</p>
+      <p className="upgrade__amount">Req. Amount: {amountRequired}</p>
       <p className="upgrade__cost">Cost: {formatNumber(cost, false, "standard")}</p>
       <p className="upgrade__type">Type: {type}</p>
       <p className="upgrade__coefficient">Coefficient: x{coefficient}</p>
@@ -37,6 +38,7 @@ UpgradeButton.propTypes = {
   cost: PropTypes.string,
   description: PropTypes.string,
   type: PropTypes.string,
+  amountRequired: PropTypes.string,
   coefficient: PropTypes.string,
   onEditUprade: PropTypes.func,
   onDeleteUpgrade: PropTypes.func,
