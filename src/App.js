@@ -66,6 +66,12 @@ function App() {
 
   const deleteUpgradeHandler = (id) => {
     setModalIsShown({ shown: true, type: "delete" });
+    const upgrade = currentUpgrades.filter((upgrade) => {
+      return upgrade.id === id;
+    })[0];
+    if (upgrade) {
+      setSelectedUpgrade(upgrade);
+    }
   };
 
   const submitHandler = (newUpgrade) => {
@@ -97,6 +103,15 @@ function App() {
     a.remove();
   };
 
+  const commitUpgradeDeletionHandler = event => {
+    event.preventDefault();
+    const filteredUpgrades = currentUpgrades.filter(upgrade => {
+      return upgrade.id !== selectedUpgrade.id;
+    });
+    setCurrentUpgrades(filteredUpgrades);
+    hideModal();
+  }
+
   return (
     <>
       {modalIsShown.shown && (
@@ -105,8 +120,9 @@ function App() {
             <div className="modal__contents">
               <h2>DELETING UPGRADE</h2>
               <p>Are you sure?</p>
+              <p>Deleting : <b>{selectedUpgrade.name}</b></p>
               <div className="upgrade__buttonGroup">
-                <button type="button" className="upgrade__button">
+                <button type="button" className="upgrade__button" onClick={commitUpgradeDeletionHandler}>
                   DELETE
                 </button>
                 <button
