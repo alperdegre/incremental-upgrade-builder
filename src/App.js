@@ -194,7 +194,7 @@ function App() {
             Load Latest Upgrades
           </button>
         </div>
-        <div>
+        <div className="mt-1">
           <button
             type="button"
             onClick={newUpgradeHandler}
