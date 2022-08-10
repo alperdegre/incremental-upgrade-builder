@@ -92,7 +92,9 @@ function App() {
     event.preventDefault();
     const blob = new Blob([JSON.stringify(currentUpgrades)]);
     const a = document.createElement("a");
-    a.download = "upgrades.json";
+    const currentDate = new Date();
+    const name = `upgrades-${currentDate.toLocaleString()}.json`;
+    a.download = name;
     a.href = window.URL.createObjectURL(blob);
     const clickEvt = new MouseEvent("click", {
       view: window,
@@ -101,16 +103,39 @@ function App() {
     });
     a.dispatchEvent(clickEvt);
     a.remove();
+    saveCurrentUpgrades();
   };
 
-  const commitUpgradeDeletionHandler = event => {
+  const commitUpgradeDeletionHandler = (event) => {
     event.preventDefault();
-    const filteredUpgrades = currentUpgrades.filter(upgrade => {
+    const filteredUpgrades = currentUpgrades.filter((upgrade) => {
       return upgrade.id !== selectedUpgrade.id;
     });
     setCurrentUpgrades(filteredUpgrades);
     hideModal();
-  }
+  };
+
+  const initialUpgradesHandler = (event) => {
+    event.preventDefault();
+    setCurrentUpgrades(initialUpgrades);
+  };
+
+  const latestUpgradesHandler = (event) => {
+    event.preventDefault();
+    const latestUpgrades = JSON.parse(
+      localStorage.getItem("incrementalUpgrades")
+    );
+    if (latestUpgrades) {
+      setCurrentUpgrades(latestUpgrades);
+    }
+  };
+
+  const saveCurrentUpgrades = () => {
+    localStorage.setItem(
+      "incrementalUpgrades",
+      JSON.stringify(currentUpgrades)
+    );
+  };
 
   return (
     <>
@@ -120,9 +145,15 @@ function App() {
             <div className="modal__contents">
               <h2>DELETING UPGRADE</h2>
               <p>Are you sure?</p>
-              <p>Deleting : <b>{selectedUpgrade.name}</b></p>
+              <p>
+                Deleting : <b>{selectedUpgrade.name}</b>
+              </p>
               <div className="upgrade__buttonGroup">
-                <button type="button" className="upgrade__button" onClick={commitUpgradeDeletionHandler}>
+                <button
+                  type="button"
+                  className="upgrade__button"
+                  onClick={commitUpgradeDeletionHandler}
+                >
                   DELETE
                 </button>
                 <button
@@ -147,7 +178,22 @@ function App() {
       )}
       <div className="App">
         <h1>UPGRADE BUILDER</h1>
-
+        <div>
+          <button
+            type="button"
+            onClick={initialUpgradesHandler}
+            className="upgrade__button"
+          >
+            Load Initial Upgrades
+          </button>
+          <button
+            type="button"
+            onClick={latestUpgradesHandler}
+            className="upgrade__button"
+          >
+            Load Latest Upgrades
+          </button>
+        </div>
         <div>
           <button
             type="button"
