@@ -43,3 +43,15 @@ margin: 0 15rem;
   color: var(--black);
   border-radius: 0.4rem;
 }
+
+.autosave {
+  display: inline-block;
+  padding: 1rem;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  border: 1px solid var(--black);
+  background-color: var(--white);
+  color: var(--black);
+  border-radius: 0.4rem;
+}

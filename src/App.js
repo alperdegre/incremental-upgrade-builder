@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import initialUpgrades from "./data/upgrades.json";
 import Modal from "./components/UI/Modal";
 import UpgradeForm from "./components/UpgradeForm";
+import useInterval from "./hooks/useInterval";
 
 function App() {
   const [currentUpgrades, setCurrentUpgrades] = useState(initialUpgrades);
@@ -20,6 +21,7 @@ function App() {
     type: "new",
   });
   const [selectedUpgrade, setSelectedUpgrade] = useState({});
+  const [isSaving, setIsSaving] = useState(false);
 
   const minerNames = ["Stone", "Iron", "Gold", "Emerald", "Diamond"];
 
@@ -137,6 +139,15 @@ function App() {
     );
   };
 
+  // Saves current upgrades every minute
+  useInterval(() => {
+    setIsSaving(true);
+    saveCurrentUpgrades();
+    setTimeout(() => {
+      setIsSaving(false);
+    },2000)
+  }, [60000]);
+ 
   return (
     <>
       {modalIsShown.shown && (
@@ -176,6 +187,7 @@ function App() {
           )}
         </Modal>
       )}
+      {isSaving && <div className="autosave">Autosaving...</div>}
       <div className="App">
         <h1>UPGRADE BUILDER</h1>
         <div>
