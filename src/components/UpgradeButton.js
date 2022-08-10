@@ -39,7 +39,7 @@ UpgradeButton.propTypes = {
   description: PropTypes.string,
   type: PropTypes.string,
   amountRequired: PropTypes.string,
-  coefficient: PropTypes.string,
+  coefficient: PropTypes.number,
   onEditUprade: PropTypes.func,
   onDeleteUpgrade: PropTypes.func,
 };

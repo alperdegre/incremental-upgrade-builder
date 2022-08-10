@@ -145,9 +145,9 @@ function App() {
     saveCurrentUpgrades();
     setTimeout(() => {
       setIsSaving(false);
-    },2000)
+    }, 2000);
   }, [60000]);
- 
+
   return (
     <>
       {modalIsShown.shown && (
@@ -217,7 +217,7 @@ function App() {
           <span> Show: </span>
           {minerCheckboxes.map((miner, index) => {
             return (
-              <label>
+              <label key={minerNames[index]}>
                 <input
                   type={"checkbox"}
                   onChange={() => minerTypeCheckedHandler(index)}
@@ -245,6 +245,7 @@ function App() {
           .map((upgrade) => {
             return (
               <UpgradeButton
+                key={upgrade.id}
                 id={upgrade.id}
                 name={upgrade.name}
                 cost={upgrade.cost}

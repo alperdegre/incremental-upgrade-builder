@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 const UpgradeForm = ({ modalType, onHideModal, upgrade, totalUpgradeAmount, onSubmitChange }) => {
   const [currentId, setCurrentId] = useState(upgrade ? upgrade.id : totalUpgradeAmount);
@@ -139,7 +140,7 @@ const UpgradeForm = ({ modalType, onHideModal, upgrade, totalUpgradeAmount, onSu
             APPLY
           </button>
           <button
-            type="submit"
+            type="button"
             className="upgrade__button"
             onClick={onHideModal}
           >
@@ -150,5 +151,13 @@ const UpgradeForm = ({ modalType, onHideModal, upgrade, totalUpgradeAmount, onSu
     </>
   );
 };
+
+UpgradeForm.propTypes = {
+  modalType: PropTypes.string,
+  onHideModal: PropTypes.func,
+  upgrade: PropTypes.object, 
+  totalUpgradeAmount: PropTypes.number, 
+  onSubmitChange: PropTypes.func
+}
 
 export default UpgradeForm;
