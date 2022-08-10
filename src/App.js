@@ -82,10 +82,20 @@ function App() {
     hideModal();
   };
 
-  const saveChangesHandler = event => {
+  const exportJSONHandler = (event) => {
     event.preventDefault();
-    
-  }
+    const blob = new Blob([JSON.stringify(currentUpgrades)]);
+    const a = document.createElement("a");
+    a.download = "upgrades.json";
+    a.href = window.URL.createObjectURL(blob);
+    const clickEvt = new MouseEvent("click", {
+      view: window,
+      bubbles: true,
+      cancelable: true,
+    });
+    a.dispatchEvent(clickEvt);
+    a.remove();
+  };
 
   return (
     <>
@@ -146,10 +156,10 @@ function App() {
           })}
           <button
             type="button"
-            onClick={saveChangesHandler}
+            onClick={exportJSONHandler}
             className="upgrade__button"
           >
-            Save Changes
+            Export as JSON
           </button>
         </div>
         {currentUpgrades
