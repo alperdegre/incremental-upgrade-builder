@@ -39,9 +39,11 @@ margin: 0 15rem;
 
 .modal__input {
   border: 1px solid var(--black);
-  background-color: transparent;
+  background-color: var(--white);
   color: var(--black);
   border-radius: 0.4rem;
+  width: 256px;
+  resize: none;
 }
 
 .autosave {

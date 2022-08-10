@@ -80,17 +80,18 @@ const UpgradeForm = ({ modalType, onHideModal, upgrade, totalUpgradeAmount, onSu
         </div>
         <div className="upgrade__inputGroup">
           <label htmlFor="description">Description:</label>
-          <input
-            type={"text"}
+          <textarea
             id="description"
             className="modal__input"
+            rows="5"
+            columns="10"
             value={descriptionInput}
             onChange={inputChangeHandler}
           />
         </div>
         <div className="upgrade__inputGroup">
           <label htmlFor="miner">Applies To:</label>
-          <select value={minerInput} id="miner" onChange={inputChangeHandler}>
+          <select value={minerInput} id="miner" onChange={inputChangeHandler} className="modal__input">
             <option value={"0"}>Stone</option>
             <option value={"1"}>Iron</option>
             <option value={"2"}>Gold</option>
@@ -120,7 +121,7 @@ const UpgradeForm = ({ modalType, onHideModal, upgrade, totalUpgradeAmount, onSu
         </div>
         <div className="upgrade__inputGroup">
           <label htmlFor="type">Type:</label>
-          <select value={typeInput} id="type" onChange={inputChangeHandler}>
+          <select value={typeInput} id="type" onChange={inputChangeHandler} className="modal__input">
             <option value={"additive"}>Additive</option>
             <option value={"multiplicative"}>Multiplicative</option>
           </select>
